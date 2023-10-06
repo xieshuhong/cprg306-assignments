@@ -57,7 +57,7 @@ export default function NewEvent() {
   return (
     <main className="flex justify-center w-full">
           <form className="p-2 m-4 bg-slate-900 text-black max-w-sm w-full" onSubmit={handleSubmit}>
-                <div class="mb-2">
+                <div className="mb-2">
                     <input 
                         onChange={handleNameChange}
                         placeholder="Item name" 
@@ -65,7 +65,7 @@ export default function NewEvent() {
                         required className="w-full mt-1 border-2 border-gray-300 p-2 rounded-lg font-sans"
                     />
                 </div>
-                <div class="flex justify-between">
+                <div className="flex justify-between">
                     <input
                         onChange={handleQuantityChange}
                         type="number" 
