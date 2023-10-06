@@ -3,100 +3,92 @@
 import { useState } from "react";
 
 export default function NewEvent() {
+
+    ("Produce", "Dairy", "Bakery", "Meat", 
+    "Frozen Foods", "Canned Goods", "Dry Goods", 
+    "Beverages", "Snacks", "Household", "Other")
+
+  let categories = [
+    {label: "Produce", value: "Produce" },
+    {label: "Dairy", value: "Dairy" },
+    {label: "Bakery", value: "Bakery" },
+    {label: "Frozen Foods", value: "Frozen Foods" },
+    {label: "Canned Goods", value: "Canned Goods" },
+    {label: "Dry Goods", value: "Dry Goods"},
+    {label: "Beverages", value: "Beverages"},
+    {label: "Snacks", value: "Snacks"},
+    {label: "Household", value: "Household"},
+    {label: "Other", value: "Other"}
+  ];
   const [name, setName] = useState("");
-  const [date, setDate] = useState("");
-  const [location, setLocation] = useState("");
-  const [description, setDescription] = useState("");
-  const [eventCreated, setEventCreated] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [category, setCategory] = useState("Produce");
+
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const newEvent = {
       name,
-      date,
-      location,
-      description,
+      quantity,
+      category
     };
-    console.log(newEvent);
-
-    setEventCreated(true);
-
+    alert(`Added item: ${newEvent.name}, quantity: ${newEvent.quantity} category: ${newEvent.category}`);
     setName("");
-    setDate("");
-    setLocation("");
-    setDescription("");
-
-    setEventCreated(false);
+    setQuantity(1);
+    setCategory("Produce");
   };
 
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
 
-  const handleDateChange = (event) => {
-    setDate(event.target.value);
-  };
+  const handleQuantityChange = (event) => {
+    setQuantity(Number(event.target.value))
+  }
 
-  const handleLocationChange = (event) => {
-    setLocation(event.target.value);
-  };
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value)
+  }
 
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
-  };
+
 
   return (
-    <main>
-      <div className="min-h-screen bg-blue-gray-100 flex items-center justify-center">
-        {eventCreated && (
-          <div className="absolute top-0 mt-8 text-2xl text-yellow-400">
-            Event Created
-          </div>
-        )}
-        <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-          <form onSubmit={handleSubmit}>
-            <label className="block mb-4">
-              <input
-                required
-                onChange={handleNameChange}
-                placeholder="Item name"
-                value={name}
-                className="mt-1 p-1 block w-full rounded-md text-black bg-gray-100 focus:bg-white"
-              />
-            </label>
+    <main className="flex justify-center w-full">
+          <form className="p-2 m-4 bg-slate-900 text-black max-w-sm w-full" onSubmit={handleSubmit}>
+                <div class="mb-2">
+                    <input 
+                        onChange={handleNameChange}
+                        placeholder="Item name" 
+                        value={name}
+                        required className="w-full mt-1 border-2 border-gray-300 p-2 rounded-lg font-sans"
+                    />
+                </div>
+                <div class="flex justify-between">
+                    <input
+                        onChange={handleQuantityChange}
+                        type="number" 
+                        min="1" 
+                        max="99" 
+                        value={quantity}
+                        required 
+                        className="w-20 ml-1 border-2 border-gray-300 p-2 rounded-lg font-sans" 
+                    />
+                    <select value={category} className="ml-1 border-2 border-gray-300 p-2 rounded-lg font-sans" 
+                     onChange={handleCategoryChange}>
+                        {categories.map((category)=>(
+                            <option value={category.value}>{category.label}</option>
+                        ))}
+                    </select>
+            </div>
 
-
-            <label className="block mb-4 ">
-              <span className="text-gray-800">Event Location:</span>
-              <input
-                required
-                onChange={handleLocationChange}
-                value={location}
-                className="mt-1 p-1 block w-full rounded-md text-black bg-gray-100 focus:bg-white"
-              />
-            </label>
-
-            <label className="block mb-4">
-              <span className="text-gray-800">Event Description:</span>
-              <textarea
-                required
-                onChange={handleDescriptionChange}
-                value={description}
-                className="mt-1 p-1 block w-full rounded-md text-black bg-gray-100 focus:bg-white"
-                rows="3"
-              />
-            </label>
-
-            <button
-              type="submit"
-              className="w-full py-2 px-4 bg-sky-600 hover:bg-sky-500 rounded-md text-white"
-            >
-              +
+            <button 
+              type="submit" 
+              className="w-full mt-4 py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                +
             </button>
           </form>
-        </div>
-      </div>
     </main>
   );
 }
