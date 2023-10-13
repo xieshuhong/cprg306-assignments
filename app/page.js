@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 export default function Home() {
-  const weekDemos = [1, 2, 3, 4, 5];
-  const doneUpTo = 6;
+  const weekDemos = [1, 2, 3, 4, 5, 6, 7, 8];
+  const doneUpTo = 8;
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
