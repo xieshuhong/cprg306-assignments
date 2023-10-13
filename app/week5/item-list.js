@@ -38,28 +38,26 @@ export default function ItemList() {
                 quantity={item.quantity}
                 category={item.category}
               />
-            ))) : (
-              <div>
-                {categories.map((category) => {
-                  return (
-                    <div key={category}>
-                      <h3 className="capitalize text-xl">{category}</h3>
-                      {itemArr.map((item) => {
-                        return (
-                          item.category == category ?
-                            <Item
-                              key={item.id}
-                              name={item.name}
-                              quantity={item.quantity}
-                              category={item.category}
-                            /> : null
-                        )
-                      }
-                      )}
-                    </div>)
+            ))) :
+            (categories.map((category) => {
+                    return (
+                      <div key={category}>
+                        <h3 className="capitalize text-xl">{category}</h3>
+                        {itemArr.map((item) => {
+                          return (
+                                  item.category == category ?
+                                  <Item
+                                    key={item.id}
+                                    name={item.name}
+                                    quantity={item.quantity}
+                                    category={item.category}
+                                  /> : null
+                          )
+                        }
+                        )}
+                      </div>
+                    )
                 })
-                }
-              </div>
             )
         }
       </div>
