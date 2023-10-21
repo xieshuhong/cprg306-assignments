@@ -56,6 +56,7 @@ export default function ItemList({items, onClickSort, onItemSelect}) {
                                     name={item.name}
                                     quantity={item.quantity}
                                     category={item.category}
+                                    onSelect={() => onItemSelect(item.name)}
                                   /> : null
                           )
                         }
