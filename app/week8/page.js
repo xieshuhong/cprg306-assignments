@@ -23,7 +23,7 @@ export default function Page() {
       <h1 class="text-4xl font-bold mb-5">Shopping List App</h1>
       <br />
       <div>
-        { user? (<><p>Signed in as {user.displayName}</p>
+        { user? (<><p>Signed in as {user.displayName} {user.email}</p>
           <br />
           <button onClick={handleSignOut}>Sign out</button>
           <br />
