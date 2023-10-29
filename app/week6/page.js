@@ -3,7 +3,7 @@ import NewItem from "./new-item";
 import ItemList from "./item-list";
 import itemData from "./item.json";
 import { useState } from "react";
-export default function Week5() {
+export default function Week6() {
 
   const [items, setItems] = useState(itemData);
 
