@@ -77,8 +77,8 @@ export default function NewEvent() {
                     />
                     <select value={category} className="ml-1 border-2 border-gray-300 p-2 rounded-lg font-sans" 
                      onChange={handleCategoryChange}>
-                        {categories.map((category)=>(
-                            <option value={category.value}>{category.label}</option>
+                        {categories.map((category, index)=>(
+                            <option key={index} value={category.value}>{category.label}</option>
                         ))}
                     </select>
             </div>
