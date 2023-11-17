@@ -8,17 +8,17 @@ export default function ItemList({items, onClickSort, onItemSelect}) {
 
   const [sortBy, setSortBy] = useState("Name");
   // get different categories and sort in ascending order
-  if (items && items.length) {
+  // if (items && items.length) {
     let categories = Array.from(new Set(items.map(item => item.category))).sort();
-  }
+  // }
 
   const onClickHandle = (event) => {
     let selectedType = event.target.value;
     setSortBy(selectedType);
     if (selectedType == "Name") {
-      items.sort((a, b) => a.name >= b.name ? 1 : -1)
+      items.sort((a, b) => a.name.localeCompare(b.name))
     } else if (selectedType == "Category") {
-      items.sort((a, b) =>  a.category >= b.category ? 1 : -1)
+      items.sort((a, b) => a.category.localeCompare(b.category))
     }
      onClickSort(items)
   }

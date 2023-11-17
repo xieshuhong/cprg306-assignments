@@ -17,7 +17,7 @@ export default function Week10({params}) {
     const loadItems = async () => {
       const items = await getItems(params.uid);
       console.log(items);
-      setItems(items);
+      setItems(items.sort((a, b) => a.name.localeCompare(b.name)));
       setLoading(false);
     };
     loadItems();
@@ -25,8 +25,8 @@ export default function Week10({params}) {
 
   async function handleAddItem(item) {
     const itemId = await addItem(item, params.uid);
-    const newItem = {...item, itemId}
-    setItems([...items, newItem])
+    const newItem = {...item, id: itemId}
+    setItems([...items, newItem].sort((a, b) => a.name.localeCompare(b.name)));
   }
 
 
